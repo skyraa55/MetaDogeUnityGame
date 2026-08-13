@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: #060B14;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(34,211,238,0.10), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(45,212,191,0.08), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(59,130,246,0.10), transparent 45%);
+}
+
+::selection {
+  background: #22D3EE;
+  color: #060B14;
+}
+
+:focus-visible {
+  outline: 2px solid #22D3EE;
+  outline-offset: 3px;
+}
+
+.bg-hudgrid {
+  background-image:
+    linear-gradient(rgba(234,242,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234,242,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.eyebrow {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #d44e2d;
+}
+
+/* Professional glassy rounded card — replaces the old sci-fi cut-corner HUD panel */
+.hud-panel {
+  position: relative;
+  border-radius: 20px;
+  background:
+    linear-gradient(160deg, rgba(18,31,51,0.9) 0%, rgba(10,17,32,0.9) 100%);
+  border: 1px solid rgba(139, 154, 179, 0.14);
+  box-shadow: 0 1px 0 0 rgba(255,255,255,0.04) inset, 0 20px 45px -20px rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+}
+
+.hud-panel-sm {
+  border-radius: 16px;
+}
+
+/* Decorative sci-fi corner brackets are retired in favor of clean rounded glass cards */
+.hud-corner {
+  display: none;
+}
+
+/* Soft glowing border used on featured / hovered cards */
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(34,211,238,0.35), 0 0 40px -6px rgba(34,211,238,0.35);
+}
+
+/* Glass pill badge, used for eyebrow chips, tags etc */
+.glass-chip {
+  border-radius: 999px;
+  background: rgba(234,242,255,0.04);
+  border: 1px solid rgba(139,154,179,0.22);
+  backdrop-filter: blur(8px);
+}
+
+/* Frosted navbar / panel surface */
+.glass-surface {
+  background: rgba(6,11,20,0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Cyan → blue gradient used for primary CTAs and accents */
+.gradient-cta {
+  background: linear-gradient(100deg, #22D3EE 0%, #2DD4BF 45%, #3B82F6 100%);
+}
+
+/* Subtle animated conic glow used behind the hero art panel */
+.glow-blob {
+  background: radial-gradient(closest-side, rgba(34,211,238,0.35), rgba(59,130,246,0.18) 55%, transparent 75%);
+  filter: blur(10px);
+}
+
+.clip-diagonal-b {
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+}
+.clip-diagonal-t {
+  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
+}
+
+.mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+.mask-fade-r {
+  mask-image: linear-gradient(to right, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 60%, transparent 100%);
+}

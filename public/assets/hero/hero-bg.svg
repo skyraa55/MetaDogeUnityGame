@@ -1,0 +1,85 @@
+<svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050A13"/>
+      <stop offset="45%" stop-color="#0A1424"/>
+      <stop offset="100%" stop-color="#050A13"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.55"/>
+      <stop offset="35%" stop-color="#2DD4BF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blueGlow" cx="80%" cy="20%" r="45%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050A13" stop-opacity="0"/>
+      <stop offset="70%" stop-color="#050A13" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#050A13" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E1A2C"/>
+      <stop offset="100%" stop-color="#050A13"/>
+    </linearGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A1424" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0A1424" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="1080" fill="url(#sunGlow)"/>
+  <rect width="1920" height="1080" fill="url(#blueGlow)"/>
+
+  <!-- distant skyline silhouettes -->
+  <g opacity="0.9">
+    <rect x="40" y="620" width="90" height="330" fill="url(#towerGrad)"/>
+    <rect x="150" y="560" width="60" height="390" fill="url(#towerGrad)"/>
+    <rect x="230" y="670" width="120" height="280" fill="url(#towerGrad)"/>
+    <rect x="1650" y="600" width="80" height="350" fill="url(#towerGrad)"/>
+    <rect x="1740" y="540" width="55" height="410" fill="url(#towerGrad)"/>
+    <rect x="1810" y="650" width="100" height="300" fill="url(#towerGrad)"/>
+    <rect x="380" y="700" width="50" height="250" fill="url(#towerGrad)"/>
+    <rect x="1520" y="690" width="55" height="260" fill="url(#towerGrad)"/>
+  </g>
+
+  <!-- horizon glow line -->
+  <rect x="0" y="628" width="1920" height="2" fill="#22D3EE" opacity="0.35"/>
+
+  <!-- perspective arena floor grid -->
+  <g stroke="#2DD4BF" stroke-opacity="0.18" stroke-width="1.5">
+    <line x1="960" y1="630" x2="-400" y2="1080"/>
+    <line x1="960" y1="630" x2="-40" y2="1080"/>
+    <line x1="960" y1="630" x2="340" y2="1080"/>
+    <line x1="960" y1="630" x2="700" y2="1080"/>
+    <line x1="960" y1="630" x2="1050" y2="1080"/>
+    <line x1="960" y1="630" x2="1420" y2="1080"/>
+    <line x1="960" y1="630" x2="1780" y2="1080"/>
+    <line x1="960" y1="630" x2="2140" y2="1080"/>
+    <line x1="960" y1="630" x2="2500" y2="1080"/>
+    <line x1="0" y1="760" x2="1920" y2="760" stroke-opacity="0.12"/>
+    <line x1="0" y1="860" x2="1920" y2="860" stroke-opacity="0.14"/>
+    <line x1="0" y1="960" x2="1920" y2="960" stroke-opacity="0.17"/>
+    <line x1="0" y1="1040" x2="1920" y2="1040" stroke-opacity="0.2"/>
+  </g>
+
+  <rect width="1920" height="1080" fill="url(#floorGrad)"/>
+
+  <!-- floating embers / particles -->
+  <g fill="#22D3EE">
+    <circle cx="220" cy="300" r="2.2" opacity="0.6"/>
+    <circle cx="480" cy="180" r="1.6" opacity="0.5"/>
+    <circle cx="720" cy="360" r="2.4" opacity="0.55"/>
+    <circle cx="1180" cy="220" r="1.8" opacity="0.5"/>
+    <circle cx="1420" cy="340" r="2.2" opacity="0.6"/>
+    <circle cx="1650" cy="200" r="1.6" opacity="0.45"/>
+    <circle cx="90" cy="480" r="1.8" opacity="0.4"/>
+    <circle cx="1800" cy="470" r="2" opacity="0.45"/>
+    <circle cx="960" cy="140" r="1.6" opacity="0.4"/>
+  </g>
+
+  <!-- vignette -->
+  <rect width="1920" height="1080" fill="url(#fade)"/>
+</svg>
