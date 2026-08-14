@@ -1,9 +1,6 @@
 import { REWARDS, AMBASSADOR_STEPS } from "../data/site";
 import { PrimaryButton } from "./ui";
 
-// Sleek metallic / premium treatment — matches Characters.jsx and Token.jsx.
-// Dark charcoal canvas, chrome ambient glow, hairline dividers, mono labels.
-// No red badges, no rounded pill chips — reads like a clean spec panel.
 
 const CHECKER = (
   <svg width="14" height="14" viewBox="0 0 14 14" className="opacity-40">
@@ -64,9 +61,6 @@ export default function Ambassador() {
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
               Ambassador Program
             </span>
-            <span className="hidden sm:inline font-mono text-[10px] tracking-[0.2em] uppercase text-white/25">
-              Play / Create / Refer / Compete / Earn
-            </span>
           </div>
           <div className="flex items-center gap-2 text-white/30">
             {CHECKER}
@@ -83,7 +77,7 @@ export default function Ambassador() {
           </h2>
 
           <p className="mt-6 text-white/45 leading-relaxed text-sm sm:text-base">
-            A community-driven program built to reward our most active
+            A community driven program built to reward our most active
             players, creators and community contributors. Play the game,
             create content, bring in new players, compete in tournaments and
             help grow the MetaDogeUnity ecosystem.
