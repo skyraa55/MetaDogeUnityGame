@@ -1,10 +1,10 @@
 import { Eyebrow } from "./ui";
 
 const STAGES = [
-  { label: "Match", icon: "▣" },
-  { label: "Elimination", icon: "✕" },
-  { label: "Reward", icon: "◈" },
-  { label: "+$MU", icon: "$" },
+  { label: "Match", icon: "▣", desc: "Enter a live match" },
+  { label: "Elimination", icon: "✕", desc: "Take down opponents" },
+  { label: "Reward", icon: "◈", desc: "Earn instantly" },
+  { label: "+$MU", icon: "$", desc: "Paid on-chain" },
 ];
 
 const FEED = [
@@ -17,71 +17,99 @@ const FEED = [
 
 export default function KillToEarn() {
   return (
-    <section className="relative py-24 sm:py-32 bg-ink overflow-hidden">
-      <div className="absolute inset-0 bg-hudgrid opacity-25" />
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <Eyebrow>On-Chain Combat</Eyebrow>
-        <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase leading-[1.05] tracking-tight mb-14 max-w-xl">
-          Every Kill <span className="text-mu-yellow">Matters</span>
-        </h2>
+    <section className="relative bg-black py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        {/* Header */}
+        <div className="mb-16 flex flex-col gap-4 border-b border-white/10 pb-10 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <Eyebrow>On-Chain Combat</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+              Every Kill Matters
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm leading-relaxed text-gray-400">
+            Eliminate opponents in live matches and earn $MU instantly, settled on-chain, no waiting.
+          </p>
+        </div>
 
-        <div className="grid lg:grid-cols-[1fr_1px_1fr] gap-10 lg:gap-0 items-center">
-          {/* stage sequence */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-2">
-            {STAGES.map((s, i) => (
-              <div key={s.label} className="flex items-center gap-2 sm:gap-3">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 rounded-full border border-mu-green/50 bg-ink-panel flex items-center justify-center font-display font-bold text-mu-green text-xl relative">
-                    {s.icon}
-                    {i === 3 && (
-                      <span className="absolute inset-0 rounded-full border border-mu-green animate-pulseGlow" />
-                    )}
+        {/* Stage stepper */}
+        <div className="mb-16">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-4">
+            {STAGES.map((s, i) => {
+              const isLast = i === STAGES.length - 1;
+              return (
+                <div
+                  key={s.label}
+                  className={`flex flex-col gap-3 p-5 sm:p-6 ${
+                    isLast ? "bg-red-600" : "bg-black"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm font-bold ${
+                        isLast
+                          ? "border-white bg-black text-white"
+                          : "border-red-600/50 text-red-500"
+                      }`}
+                    >
+                      {s.icon}
+                    </span>
+                    <span
+                      className={`font-mono text-xs ${
+                        isLast ? "text-white/70" : "text-gray-600"
+                      }`}
+                    >
+                      0{i + 1}
+                    </span>
                   </div>
-                  <span className="font-display text-[11px] tracking-widest uppercase text-mu-grey">
-                    {s.label}
-                  </span>
+                  <div>
+                    <p
+                      className={`font-display text-sm font-bold uppercase tracking-wide ${
+                        isLast ? "text-white" : "text-white"
+                      }`}
+                    >
+                      {s.label}
+                    </p>
+                    <p
+                      className={`mt-1 text-xs leading-snug ${
+                        isLast ? "text-white/80" : "text-gray-500"
+                      }`}
+                    >
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
-                {i < STAGES.length - 1 && (
-                  <span className="hidden sm:block text-mu-grey/40 text-xl mb-6">→</span>
-                )}
-              </div>
-            ))}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Live feed panel */}
+        <div className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.02]">
+          <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
+            <p className="font-mono text-xs uppercase tracking-widest text-gray-400">
+              Live Match Feed
+            </p>
+            <span className="flex items-center gap-2 font-mono text-xs text-red-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+              LIVE
+            </span>
           </div>
 
-          <div className="hidden lg:block w-px h-64 bg-gradient-to-b from-transparent via-white/15 to-transparent mx-auto" />
-
-          {/* live kill feed HUD */}
-          <div className="hud-panel relative bg-ink-panel/80 border border-white/10 p-5 sm:p-6 overflow-hidden h-72">
-            <span className="hud-corner corner-tl text-mu-yellow/60" />
-            <span className="hud-corner corner-br text-mu-yellow/60" />
-            <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[10px] tracking-widest uppercase text-mu-grey">
-                Live Match Feed
-              </p>
-              <span className="flex items-center gap-1.5 font-mono text-[10px] text-mu-green">
-                <span className="w-1.5 h-1.5 rounded-full bg-mu-green animate-pulseGlow" /> LIVE
-              </span>
-            </div>
-            <div className="space-y-3">
-              {FEED.map((f, i) => (
-                <div
-                  key={f.text}
-                  className="flex items-center justify-between gap-3 border-l-2 border-mu-yellow/60 bg-black/30 pl-3 pr-3 py-2 animate-killfeed"
-                  style={{
-                    animationDuration: "9s",
-                    animationDelay: `${i * 1.8}s`,
-                    animationIterationCount: "infinite",
-                  }}
-                >
-                  <span className="font-mono text-[11px] sm:text-xs text-paper truncate">
-                    {f.text}
-                  </span>
-                  <span className="font-display font-bold text-xs text-mu-yellow shrink-0">
-                    {f.reward}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <div className="divide-y divide-white/5">
+            {FEED.map((f) => (
+              <div
+                key={f.text}
+                className="flex items-center justify-between gap-4 px-5 py-3.5 transition-colors hover:bg-white/[0.03] sm:px-6"
+              >
+                <span className="truncate font-mono text-xs text-gray-200 sm:text-sm">
+                  {f.text}
+                </span>
+                <span className="shrink-0 rounded border border-red-600/40 bg-red-600/10 px-2 py-1 font-display text-xs font-bold text-red-500">
+                  {f.reward}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
