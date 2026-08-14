@@ -1,6 +1,17 @@
 import { REWARDS, AMBASSADOR_STEPS } from "../data/site";
 import { PrimaryButton } from "./ui";
 
+// Sleek metallic / premium treatment — matches Characters.jsx and Token.jsx.
+// Dark charcoal canvas, chrome ambient glow, hairline dividers, mono labels.
+// No red badges, no rounded pill chips — reads like a clean spec panel.
+
+const CHECKER = (
+  <svg width="14" height="14" viewBox="0 0 14 14" className="opacity-40">
+    <rect x="0" y="0" width="7" height="7" fill="currentColor" />
+    <rect x="7" y="7" width="7" height="7" fill="currentColor" />
+  </svg>
+);
+
 // Simple inline icon set — no external icon library required.
 // Cycled by position across REWARDS, so it works regardless of data content.
 const RewardIcon = ({ index }) => {
@@ -23,10 +34,10 @@ const RewardIcon = ({ index }) => {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="w-6 h-6"
+      className="w-5 h-5"
     >
       {icons[index % icons.length]}
     </svg>
@@ -35,69 +46,86 @@ const RewardIcon = ({ index }) => {
 
 export default function Ambassador() {
   return (
-    <section id="ambassador" className="relative bg-black py-24 sm:py-32 overflow-hidden">
-      {/* background accents */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px]" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-red-700/10 blur-[160px] rounded-full pointer-events-none" />
+    <section id="ambassador" className="relative bg-[#0a0a0a] py-24 sm:py-32 overflow-hidden">
+      {/* faint metallic ambient glow, echoes the liquid-chrome hero mark */}
+      <div
+        className="pointer-events-none absolute -top-52 left-1/2 -translate-x-1/2 h-[560px] w-[560px] rounded-full blur-[140px] opacity-[0.18]"
+        style={{
+          background:
+            "conic-gradient(from 180deg, #ffffff, #6b6b6b, #101010, #ffffff)",
+        }}
+      />
+      <div className="absolute inset-0 bg-hudgrid opacity-[0.05]" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        {/* header */}
-        <div className="max-w-3xl mx-auto mb-20 text-center">
-          <span className="inline-block font-mono text-xs tracking-[0.3em] uppercase text-red-500 border border-red-600/40 rounded-full px-4 py-1.5 mb-6">
-            Ambassador Program
-          </span>
+        {/* top meta row, mirrors the MEASURE / ANALYZE / IMPLEMENT / MORE strip */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-16">
+          <div className="flex items-center gap-6">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
+              Ambassador Program
+            </span>
+            <span className="hidden sm:inline font-mono text-[10px] tracking-[0.2em] uppercase text-white/25">
+              Play / Create / Refer / Compete / Earn
+            </span>
+          </div>
+          <div className="flex items-center gap-2 text-white/30">
+            {CHECKER}
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
+              {REWARDS.length} reward tiers
+            </span>
+          </div>
+        </div>
 
-          <h2 className="font-display font-black uppercase text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight text-white">
-            $MU <span className="text-red-500">Ambassador</span> Program
+        {/* header */}
+        <div className="max-w-2xl mx-auto mb-24 text-center">
+          <h2 className="font-sans font-medium text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] text-white">
+            $MU Ambassador Program
           </h2>
 
-          <p className="mt-5 font-display font-bold tracking-[0.2em] uppercase text-xs sm:text-sm text-gray-500">
-            Play <span className="text-red-500">/</span> Create{" "}
-            <span className="text-red-500">/</span> Refer{" "}
-            <span className="text-red-500">/</span> Compete{" "}
-            <span className="text-red-500">/</span> Earn
-          </p>
-
-          <p className="mt-6 text-gray-400 leading-relaxed">
+          <p className="mt-6 text-white/45 leading-relaxed text-sm sm:text-base">
             A community-driven program built to reward our most active
             players, creators and community contributors. Play the game,
             create content, bring in new players, compete in tournaments and
             help grow the MetaDogeUnity ecosystem.
           </p>
 
-          <div className="mt-9 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <PrimaryButton href="#">Become an Ambassador</PrimaryButton>
           </div>
         </div>
 
         {/* reward dashboard */}
-        <div className="mb-24">
+        <div className="mb-28">
           <div className="flex items-center gap-4 mb-8">
-            <h3 className="font-display font-bold uppercase text-sm tracking-[0.2em] text-white whitespace-nowrap">
+            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-white/50 whitespace-nowrap">
               Reward Dashboard
             </h3>
             <span className="h-px flex-1 bg-white/10" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
             {REWARDS.map((r, i) => (
               <div
                 key={r.title}
-                className="group relative bg-white/[0.02] border border-white/10 rounded-lg p-5 hover:border-red-600/50 hover:bg-white/[0.04] transition-all duration-300"
+                className="group relative bg-[#0a0a0a] hover:bg-white/[0.03] p-6 transition-colors duration-300"
               >
-                <div className="flex items-center justify-center w-11 h-11 rounded-md bg-red-600/10 border border-red-600/30 text-red-500 mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                <div className="absolute top-4 right-5 font-mono text-[10px] tracking-widest text-white/25">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+
+                <div className="flex items-center justify-center w-10 h-10 border border-white/15 text-white/60 mb-5 group-hover:border-white/40 group-hover:text-white transition-colors duration-300">
                   <RewardIcon index={i} />
                 </div>
 
-                <h4 className="font-display font-bold uppercase text-sm tracking-wide text-white mb-1">
+                <h4 className="font-sans font-medium text-sm text-white mb-1.5">
                   {r.title}
                 </h4>
-                <p className="font-display font-black text-red-500 text-xl mb-2">
+                <p className="font-sans font-medium text-white text-xl mb-3 tracking-tight">
                   {r.amount}
                 </p>
-                <p className="text-gray-400 text-xs leading-relaxed">{r.desc}</p>
+                <p className="text-white/40 text-xs leading-relaxed">{r.desc}</p>
 
-                <p className="mt-4 pt-3 border-t border-white/10 font-mono text-[10px] text-gray-600 tracking-wide">
+                <p className="mt-5 pt-3 border-t border-white/10 font-mono text-[9px] tracking-[0.15em] uppercase text-white/25">
                   {r.note}
                 </p>
               </div>
@@ -107,26 +135,26 @@ export default function Ambassador() {
 
         {/* steps timeline */}
         <div>
-          <div className="flex items-center gap-4 mb-10">
-            <h3 className="font-display font-bold uppercase text-sm tracking-[0.2em] text-white whitespace-nowrap">
+          <div className="flex items-center gap-4 mb-14">
+            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-white/50 whitespace-nowrap">
               How to Become an Ambassador
             </h3>
             <span className="h-px flex-1 bg-white/10" />
           </div>
 
           <div className="relative">
-            <div className="hidden lg:block absolute top-6 left-0 right-0 h-px bg-white/10" />
+            <div className="hidden lg:block absolute top-5 left-0 right-0 h-px bg-white/10" />
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-y-10 gap-x-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-4">
               {AMBASSADOR_STEPS.map((s) => (
                 <div key={s.n} className="relative flex flex-col items-center text-center">
-                  <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-black border-2 border-red-600 font-display font-bold text-white text-sm mb-4">
-                    {s.n}
+                  <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#0a0a0a] border border-white/20 font-mono font-medium text-white/70 text-xs mb-5">
+                    {String(s.n).padStart(2, "0")}
                   </div>
-                  <h4 className="font-display font-bold uppercase text-sm tracking-wide text-white mb-1.5">
+                  <h4 className="font-sans font-medium text-sm text-white mb-1.5">
                     {s.title}
                   </h4>
-                  <p className="text-gray-500 text-xs leading-relaxed max-w-[160px]">
+                  <p className="text-white/40 text-xs leading-relaxed max-w-[160px]">
                     {s.desc}
                   </p>
                 </div>
@@ -134,7 +162,7 @@ export default function Ambassador() {
             </div>
           </div>
 
-          <div className="mt-16 flex justify-center">
+          <div className="mt-20 flex justify-center">
             <PrimaryButton href="#">Join the Ambassador Program</PrimaryButton>
           </div>
         </div>

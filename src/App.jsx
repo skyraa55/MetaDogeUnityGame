@@ -19,7 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <Gameplay />
-        <Trailer />
+        {/* <Trailer /> */}
         <CoreGameplay />
         <Characters />
         <Token />
