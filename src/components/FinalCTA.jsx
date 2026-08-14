@@ -1,38 +1,75 @@
 import { LINKS } from "../data/site";
-import { PrimaryButton, GhostButton } from "./ui";
 
 export default function FinalCTA() {
   return (
-    <section className="relative py-28 sm:py-36 bg-ink overflow-hidden">
-      <div className="absolute inset-0 bg-hudgrid opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[700px] h-[700px] bg-mu-purple/15 blur-[160px] rounded-full" />
+    <section className="relative bg-black overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-2 bg-red-600"></div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 items-center gap-10">
-        <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
-          <div className="relative w-56 sm:w-72">
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-mu-green/25 blur-[60px] rounded-full" />
-            <img
-              src="/assets/hero/hero-red-trooper.png"
-              alt="MetaDogeUnity — Crimson, Vanguard class"
-              className="relative z-10 w-full h-auto object-contain animate-floatY"
-            />
-          </div>
-        </div>
+      <div className="relative mx-auto max-w-6xl px-6 sm:px-8 py-24 sm:py-32">
+        <div className="grid lg:grid-cols-[1.3fr_auto] gap-16 items-center">
 
-        <div className="order-1 lg:order-2 text-center lg:text-left">
-          <h2 className="font-display font-black uppercase text-4xl sm:text-5xl md:text-6xl leading-[0.98] tracking-tight mb-5">
-            Ready to Enter
-            <br />
-            the <span className="text-mu-yellow">Unity?</span>
-          </h2>
-          <p className="text-mu-grey text-lg mb-9 max-w-md mx-auto lg:mx-0">
-            The battlefield is waiting.
-          </p>
-          <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-            <PrimaryButton href={LINKS.googlePlay}>▶ Play Now</PrimaryButton>
-            <GhostButton href="#ambassador">Become an Ambassador</GhostButton>
+          <div className="relative">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none select-none absolute -top-10 -left-2 font-display font-black uppercase text-[5.5rem] sm:text-[8rem] lg:text-[10rem] leading-none tracking-tighter text-transparent"
+              style={{ WebkitTextStroke: "1px rgba(255,255,255,0.08)" }}
+            >
+              UNITY
+            </span>
+
+            <div className="relative">
+              <span className="inline-block mb-6 text-xs font-bold uppercase tracking-[0.25em] text-red-500">
+                Recruitment - Now Open
+              </span>
+
+              <h2 className="font-display font-black uppercase text-white text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight mb-6">
+                Ready to
+                <br />
+                Enter the <span className="text-red-600">Unity?</span>
+              </h2>
+
+              <p className="text-white/50 text-lg max-w-md mb-10 leading-relaxed">
+                No sidelines here. Pick a class, take your position, and hold the line.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-5">
+                <a href={LINKS.googlePlay} className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-200">
+                  <span>Play Now</span>
+                  <span>-&gt;</span>
+                </a>
+                <a href="#ambassador" className="inline-flex items-center gap-2 text-white text-sm font-bold uppercase tracking-wider border-b-2 border-white/30 pb-1 hover:border-red-600 hover:text-red-500 transition-colors duration-200">
+                  Become an Ambassador
+                </a>
+              </div>
+            </div>
           </div>
+
+          <div className="w-full max-w-xs mx-auto lg:mx-0 border border-white/15 bg-white/[0.03]">
+            <div className="flex items-center justify-between px-5 py-3 bg-red-600">
+              <span className="text-xs font-bold uppercase tracking-widest text-white">Dossier</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-white">No. 001</span>
+            </div>
+
+            <div className="px-5 py-6 divide-y divide-white/10">
+              <div className="flex items-center justify-between py-3">
+                <span className="text-xs uppercase tracking-widest text-white/40">Unit</span>
+                <span className="text-sm font-bold text-white">MetaDogeUnity</span>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <span className="text-xs uppercase tracking-widest text-white/40">Class</span>
+                <span className="text-sm font-bold text-white">Vanguard</span>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <span className="text-xs uppercase tracking-widest text-white/40">Status</span>
+                <span className="text-sm font-bold text-red-500">Recruiting</span>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <span className="text-xs uppercase tracking-widest text-white/40">Clearance</span>
+                <span className="text-sm font-bold text-white">Open</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
