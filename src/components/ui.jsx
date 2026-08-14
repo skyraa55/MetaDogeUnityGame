@@ -29,9 +29,14 @@ export function PrimaryButton({ href, children, className = "", onClick, as = "a
       onClick={onClick}
       target={href && href.startsWith("http") ? "_blank" : undefined}
       rel={href && href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className={`group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-display font-bold text-[13px] tracking-widest uppercase text-ink gradient-cta shadow-[0_10px_30px_-8px_rgba(34,211,238,0.55)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-6px_rgba(34,211,238,0.7)] active:translate-y-0 cursor-pointer ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-red-600 px-8 py-3.5 font-display text-[13px] font-bold uppercase tracking-widest text-white shadow-[0_10px_30px_-8px_rgba(220,38,38,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_14px_36px_-6px_rgba(220,38,38,0.8)] active:translate-y-0 active:bg-red-700 cursor-pointer ${className}`}
     >
-      <span className="absolute inset-0 rounded-full bg-white/0 group-hover:bg-white/10 transition-colors" />
+      {/* shine sweep on hover */}
+      <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/20 transition-transform duration-700 ease-out group-hover:translate-x-full" />
+
+      {/* subtle top highlight for depth */}
+      <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-full bg-white/10" />
+
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </Comp>
   );
