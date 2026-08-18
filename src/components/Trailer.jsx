@@ -12,12 +12,12 @@ export default function Trailer() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <Eyebrow>Cinematic</Eyebrow>
         <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase leading-[1.05] tracking-tight mb-10 max-w-xl">
-          Watch <span className="text-mu-purple">Meta Doge Unity</span>
+          Watch <span className="text-sky-400">Meta Doge Unity</span>
         </h2>
 
         <div className="hud-panel relative aspect-video overflow-hidden bg-black">
-          <span className="hud-corner corner-tl text-mu-yellow/70" />
-          <span className="hud-corner corner-br text-mu-yellow/70" />
+          <span className="hud-corner corner-tl text-sky-300/70" />
+          <span className="hud-corner corner-br text-sky-300/70" />
 
           {TRAILER_EMBED_URL ? (
             <iframe
@@ -34,15 +34,15 @@ export default function Trailer() {
               rel="noopener noreferrer"
               className="absolute inset-0 flex flex-col items-center justify-center gap-6 group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-mu-purple/20 via-ink to-mu-green/10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 via-ink to-slate-600/10" />
               <div className="absolute inset-0 bg-hudgrid opacity-30" />
-              <span className="relative z-10 flex items-center justify-center w-24 h-24 rounded-full border-2 border-mu-yellow/70 bg-ink/60 backdrop-blur-sm group-hover:scale-110 group-hover:border-mu-yellow transition-transform duration-300">
-                <span className="w-0 h-0 border-y-[14px] border-y-transparent border-l-[22px] border-l-mu-yellow ml-1.5" />
+              <span className="relative z-10 flex items-center justify-center w-24 h-24 rounded-full border-2 border-sky-400/60 bg-ink/60 backdrop-blur-sm group-hover:scale-110 group-hover:border-sky-300 transition-transform duration-300">
+                <span className="w-0 h-0 border-y-[14px] border-y-transparent border-l-[22px] border-l-sky-300 ml-1.5" />
               </span>
-              <span className="relative z-10 font-display font-bold tracking-widest uppercase text-sm text-mu-grey group-hover:text-paper transition-colors">
+              <span className="relative z-10 font-display font-bold tracking-widest uppercase text-sm text-slate-400 group-hover:text-white transition-colors">
                 Watch on YouTube — @MetaDogeUnity
               </span>
-              <span className="absolute top-5 left-5 font-mono text-[10px] tracking-widest text-mu-grey/60 uppercase">
+              <span className="absolute top-5 left-5 font-mono text-[10px] tracking-widest text-sky-300/40 uppercase">
                 Trailer Feed // Standby
               </span>
             </a>

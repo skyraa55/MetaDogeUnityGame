@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { LINKS, NAV_LINKS } from "../data/site";
 
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,16 +15,20 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-surface border-b border-white/10" : "bg-transparent"
+        scrolled ? "glass-surface border-b border-slate-400/15" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 h-[72px] flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5 shrink-0">
-          <span className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/50 glow-ring">
-            <span className="font-display font-black text-red-500 text-sm relative z-10">M</span>
+          <span className="relative flex items-center justify-center w-12 h-12 rounded-full bg-slate-800/40 border border-slate-300/40 glow-ring overflow-hidden">
+            <img
+              src="/assets/log.png"
+              alt="MetaDogeUnity logo"
+              className="w-full h-full object-cover relative z-10"
+            />
           </span>
-          <span className="font-display font-bold tracking-wider text-sm sm:text-base">
-            META<span className="text-red-500">DOGE</span>UNITY
+          <span className="font-display font-bold tracking-wider text-sm sm:text-base text-slate-100">
+            META<span className="text-sky-400">DOGE</span>UNITY
           </span>
         </a>
 
@@ -32,7 +37,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body font-semibold text-sm tracking-wide uppercase text-white hover:text-red-500 transition-colors"
+              className="font-body font-semibold text-sm tracking-wide uppercase text-slate-200 hover:text-sky-400 transition-colors"
             >
               {l.label}
             </a>
@@ -44,19 +49,19 @@ export default function Navbar() {
             href={LINKS.x}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 rounded-full flex items-center justify-center border border-white/15 text-white hover:text-white hover:border-white transition-colors"
+            className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-300/25 text-slate-200 hover:text-white hover:border-slate-100 transition-colors"
             aria-label="MetaDogeUnity on X"
           >
             <XIcon />
           </a>
           <a
-  href={LINKS.googlePlay}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="font-display font-bold text-xs tracking-widest px-5 py-2.5 rounded-full bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white shadow-[0_8px_24px_-6px_rgba(249,115,22,0.55)] hover:-translate-y-0.5 transition-transform"
->
-  Play Now
-</a>
+            href={LINKS.googlePlay}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-display font-bold text-xs tracking-widest px-5 py-2.5 rounded-full bg-gradient-to-r from-slate-600 via-sky-600 to-sky-400 text-white shadow-[0_8px_24px_-6px_rgba(56,110,158,0.55)] hover:-translate-y-0.5 transition-transform"
+          >
+            Play Now
+          </a>
         </div>
 
         <button
@@ -65,20 +70,20 @@ export default function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <span className={`block w-6 h-0.5 bg-paper transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-paper transition-opacity ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-paper transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-slate-100 transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-slate-100 transition-opacity ${open ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-slate-100 transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden glass-surface border-t border-white/10 px-5 py-6 flex flex-col gap-5">
+        <div className="lg:hidden glass-surface border-t border-slate-400/15 px-5 py-6 flex flex-col gap-5">
           {NAV_LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="font-body font-semibold text-base uppercase tracking-wide text-paper"
+              className="font-body font-semibold text-base uppercase tracking-wide text-slate-100"
             >
               {l.label}
             </a>
@@ -87,7 +92,7 @@ export default function Navbar() {
             href={LINKS.googlePlay}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-display font-bold text-xs tracking-widest uppercase px-5 py-3 rounded-full gradient-cta text-ink text-center"
+            className="font-display font-bold text-xs tracking-widest uppercase px-5 py-3 rounded-full bg-gradient-to-r from-slate-600 via-sky-600 to-sky-400 text-white text-center"
           >
             Play Now
           </a>

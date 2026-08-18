@@ -2,9 +2,9 @@ import { CORE_FEATURES } from "../data/site";
 import { Eyebrow } from "./ui";
 
 const ACCENTS = [
-  { text: "text-red-500", ring: "ring-red-500/40", glow: "shadow-red-500/30" },
+  { text: "text-sky-400", ring: "ring-sky-400/40", glow: "shadow-sky-400/30" },
   { text: "text-zinc-200", ring: "ring-white/30", glow: "shadow-white/10" },
-  { text: "text-red-500", ring: "ring-red-500/40", glow: "shadow-red-500/30" },
+  { text: "text-sky-400", ring: "ring-sky-400/40", glow: "shadow-sky-400/30" },
   { text: "text-zinc-200", ring: "ring-white/30", glow: "shadow-white/10" },
 ];
 const ICONS = ["◈", "◎", "▲", "$"];
@@ -33,14 +33,14 @@ export default function CoreGameplay() {
   return (
     <section className="relative py-28 sm:py-36 bg-black overflow-hidden">
       {/* single diagonal light beam — echoes a muzzle flash / spotlight, not a generic glow blob */}
-      <div className="absolute -top-1/3 -left-1/4 w-[140%] h-[70%] rotate-[-8deg] bg-gradient-to-r from-transparent via-red-600/10 to-transparent pointer-events-none" />
+      <div className="absolute -top-1/3 -left-1/4 w-[140%] h-[70%] rotate-[-8deg] bg-gradient-to-r from-transparent via-sky-500/10 to-transparent pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl mb-20 sm:mb-28">
           <Eyebrow>The Loop</Eyebrow>
           <h2 className="font-sans font-semibold text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-white mb-4">
             Built for competition,{" "}
-            <span className="text-red-500">not just for play</span>
+            <span className="text-sky-400">not just for play</span>
           </h2>
           <p className="text-white/50 text-base sm:text-lg leading-relaxed">
             Every system in the loop is designed around one thing: giving players a fair,
@@ -90,11 +90,11 @@ export default function CoreGameplay() {
 
       <style>{`
         .belt-track {
-          background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.3) 0 2px, transparent 2px 18px);
+          background-image: repeating-linear-gradient(90deg, rgba(111,195,240,0.35) 0 2px, transparent 2px 18px);
           animation: belt-feed 5s linear infinite;
         }
         .belt-track-vertical {
-          background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.3) 0 2px, transparent 2px 18px);
+          background-image: repeating-linear-gradient(180deg, rgba(111,195,240,0.35) 0 2px, transparent 2px 18px);
         }
         @keyframes belt-feed {
           from { background-position: 0 0; }

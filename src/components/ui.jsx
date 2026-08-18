@@ -3,8 +3,8 @@ export function Panel({ children, className = "", corners = true }) {
     <div className={`hud-panel ${className}`}>
       {corners && (
         <>
-          <span className="hud-corner corner-tl text-mu-green/70" />
-          <span className="hud-corner corner-br text-mu-green/70" />
+          <span className="hud-corner corner-tl text-sky-300/70" />
+          <span className="hud-corner corner-br text-sky-300/70" />
         </>
       )}
       {children}
@@ -15,7 +15,7 @@ export function Panel({ children, className = "", corners = true }) {
 export function Eyebrow({ children, dot = true }) {
   return (
     <div className="flex items-center gap-2 mb-4">
-      {dot && <span className="w-2 h-2 bg-red-500 shadow-[0_0_8px_2px_rgba(46,213,115,0.7)]" />}
+      {dot && <span className="w-2 h-2 bg-sky-400 shadow-[0_0_8px_2px_rgba(56,169,225,0.7)]" />}
       <span className="eyebrow">{children}</span>
     </div>
   );
@@ -29,7 +29,7 @@ export function PrimaryButton({ href, children, className = "", onClick, as = "a
       onClick={onClick}
       target={href && href.startsWith("http") ? "_blank" : undefined}
       rel={href && href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-red-600 px-8 py-3.5 font-display text-[13px] font-bold uppercase tracking-widest text-white shadow-[0_10px_30px_-8px_rgba(220,38,38,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_14px_36px_-6px_rgba(220,38,38,0.8)] active:translate-y-0 active:bg-red-700 cursor-pointer ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-slate-600 via-sky-600 to-sky-500 px-8 py-3.5 font-display text-[13px] font-bold uppercase tracking-widest text-white shadow-[0_10px_30px_-8px_rgba(56,169,225,0.6)] transition-all duration-200 hover:-translate-y-0.5 hover:from-slate-500 hover:via-sky-500 hover:to-sky-400 hover:shadow-[0_14px_36px_-6px_rgba(56,169,225,0.8)] active:translate-y-0 active:from-slate-700 active:via-sky-700 active:to-sky-600 cursor-pointer ${className}`}
     >
       {/* shine sweep on hover */}
       <span className="pointer-events-none absolute inset-0 -translate-x-full skew-x-[-20deg] bg-white/20 transition-transform duration-700 ease-out group-hover:translate-x-full" />
@@ -48,7 +48,7 @@ export function GhostButton({ href, children, className = "" }) {
       href={href}
       target={href && href.startsWith("http") ? "_blank" : undefined}
       rel={href && href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-display font-bold text-[13px] tracking-widest uppercase text-paper border border-mu-grey/30 glass-chip hover:border-mu-green hover:text-red-500 transition-colors duration-200 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-display font-bold text-[13px] tracking-widest uppercase text-paper border border-slate-400/30 glass-chip hover:border-sky-400 hover:text-sky-400 transition-colors duration-200 ${className}`}
     >
       {children}
     </a>
@@ -60,14 +60,14 @@ export function SectionHeading({ eyebrow, title, sub, align = "left" }) {
     <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""} mb-14`}>
       {eyebrow && (
         <div className={`flex items-center gap-2 mb-4 ${align === "center" ? "justify-center" : ""}`}>
-          <span className="w-2 h-2 bg-mu-green shadow-[0_0_8px_2px_rgba(46,213,115,0.7)]" />
+          <span className="w-2 h-2 bg-sky-400 shadow-[0_0_8px_2px_rgba(56,169,225,0.7)]" />
           <span className="eyebrow">{eyebrow}</span>
         </div>
       )}
       <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase leading-[1.08] tracking-tight text-paper">
         {title}
       </h2>
-      {sub && <p className="mt-4 text-mu-grey text-lg leading-relaxed">{sub}</p>}
+      {sub && <p className="mt-4 text-slate-400 text-lg leading-relaxed">{sub}</p>}
     </div>
   );
 }

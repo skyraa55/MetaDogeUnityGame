@@ -41,7 +41,7 @@ export default function KillToEarn() {
                 <div
                   key={s.label}
                   className={`flex flex-col gap-3 p-5 sm:p-6 ${
-                    isLast ? "bg-red-600" : "bg-black"
+                    isLast ? "bg-sky-600" : "bg-black"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -49,7 +49,7 @@ export default function KillToEarn() {
                       className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm font-bold ${
                         isLast
                           ? "border-white bg-black text-white"
-                          : "border-red-600/50 text-red-500"
+                          : "border-sky-500/50 text-sky-400"
                       }`}
                     >
                       {s.icon}
@@ -90,8 +90,8 @@ export default function KillToEarn() {
             <p className="font-mono text-xs uppercase tracking-widest text-gray-400">
               Live Match Feed
             </p>
-            <span className="flex items-center gap-2 font-mono text-xs text-red-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+            <span className="flex items-center gap-2 font-mono text-xs text-sky-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
               LIVE
             </span>
           </div>
@@ -105,7 +105,7 @@ export default function KillToEarn() {
                 <span className="truncate font-mono text-xs text-gray-200 sm:text-sm">
                   {f.text}
                 </span>
-                <span className="shrink-0 rounded border border-red-600/40 bg-red-600/10 px-2 py-1 font-display text-xs font-bold text-red-500">
+                <span className="shrink-0 rounded border border-sky-500/40 bg-sky-500/10 px-2 py-1 font-display text-xs font-bold text-sky-400">
                   {f.reward}
                 </span>
               </div>

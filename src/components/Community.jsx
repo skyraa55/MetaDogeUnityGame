@@ -7,7 +7,7 @@ const SOCIALS = [
     handle: "@yourgame",
     href: LINKS.x,
     live: true,
-    accent: "from-red-600 to-red-800",
+    accent: "from-slate-600 to-sky-700",
     icon: (
       <path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-6.6L4.8 22H1.6l8.1-9.3L1 2h7l4.9 6.1L18.9 2Zm-1.2 18h1.9L7.4 4h-2l12.3 16Z" />
     ),
@@ -27,7 +27,7 @@ const SOCIALS = [
     handle: "Watch gameplay",
     href: LINKS.youtube,
     live: true,
-    accent: "from-red-500 to-red-900",
+    accent: "from-sky-500 to-slate-800",
     icon: (
       <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
     ),
@@ -59,11 +59,11 @@ export default function Community() {
     <section id="community" className="relative overflow-hidden bg-black py-24 sm:py-32">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px]" />
-      <div className="absolute top-1/3 left-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700/15 blur-[180px] pointer-events-none" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-red-600/60 to-transparent" />
+      <div className="absolute top-1/3 left-1/2 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-600/20 blur-[180px] pointer-events-none" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-500/60 to-transparent" />
 
       {/* Angled top edge, echoing the Titanfall banner slices */}
-      <div className="absolute -top-1 left-0 right-0 h-16 -skew-y-1 bg-gradient-to-r from-red-900/20 via-transparent to-transparent" />
+      <div className="absolute -top-1 left-0 right-0 h-16 -skew-y-1 bg-gradient-to-r from-slate-800/25 via-transparent to-transparent" />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <div className="text-center">
@@ -72,7 +72,7 @@ export default function Community() {
           </div>
 
           <h2 className="mb-4 font-display text-4xl font-extrabold uppercase italic tracking-tight text-white sm:text-5xl md:text-6xl">
-            Join the <span className="text-red-500">Unity</span>
+            Join the <span className="text-sky-400">Unity</span>
           </h2>
 
           <p className="mx-auto mb-16 max-w-xl text-lg text-gray-400">
@@ -92,7 +92,7 @@ export default function Community() {
               style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%)" }}
               className={`group relative flex flex-col items-center gap-4 overflow-hidden border px-6 py-8 text-center transition-all duration-300 ${
                 s.live
-                  ? "border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] hover:-translate-y-1.5 hover:border-red-600/60 hover:shadow-[0_0_35px_-10px_rgba(220,38,38,0.6)]"
+                  ? "border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] hover:-translate-y-1.5 hover:border-sky-500/60 hover:shadow-[0_0_35px_-10px_rgba(56,169,225,0.6)]"
                   : "cursor-not-allowed border-white/5 bg-white/[0.015] opacity-50"
               }`}
             >
@@ -111,7 +111,7 @@ export default function Community() {
               <span
                 className={`relative flex h-14 w-14 items-center justify-center rounded-full border-2 transition-all duration-300 ${
                   s.live
-                    ? "border-red-600/50 bg-red-600/10 text-red-500 group-hover:scale-110 group-hover:border-red-500 group-hover:bg-red-600 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(220,38,38,0.7)]"
+                    ? "border-sky-500/50 bg-sky-500/10 text-sky-400 group-hover:scale-110 group-hover:border-sky-400 group-hover:bg-sky-500 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(56,169,225,0.7)]"
                     : "border-white/10 bg-white/5 text-gray-500"
                 }`}
               >
@@ -126,7 +126,7 @@ export default function Community() {
                 </p>
                 <p
                   className={`mt-1 font-mono text-[10px] uppercase tracking-widest ${
-                    s.live ? "text-gray-500 group-hover:text-red-500" : "text-gray-600"
+                    s.live ? "text-gray-500 group-hover:text-sky-400" : "text-gray-600"
                   }`}
                 >
                   {s.handle}
@@ -136,7 +136,7 @@ export default function Community() {
               <span
                 className={`mt-1 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest transition-all duration-300 ${
                   s.live
-                    ? "text-red-500 group-hover:gap-2"
+                    ? "text-sky-400 group-hover:gap-2"
                     : "text-gray-600"
                 }`}
               >

@@ -43,26 +43,26 @@ const RewardIcon = ({ index }) => {
 
 export default function Ambassador() {
   return (
-    <section id="ambassador" className="relative bg-[#0a0a0a] py-24 sm:py-32 overflow-hidden">
-      {/* faint metallic ambient glow, echoes the liquid-chrome hero mark */}
+    <section id="ambassador" className="relative bg-[#05070a] py-24 sm:py-32 overflow-hidden">
+      {/* metallic steel-blue ambient glow, echoes the logo's chrome ring */}
       <div
-        className="pointer-events-none absolute -top-52 left-1/2 -translate-x-1/2 h-[560px] w-[560px] rounded-full blur-[140px] opacity-[0.18]"
+        className="pointer-events-none absolute -top-52 left-1/2 -translate-x-1/2 h-[560px] w-[560px] rounded-full blur-[140px] opacity-[0.22]"
         style={{
           background:
-            "conic-gradient(from 180deg, #ffffff, #6b6b6b, #101010, #ffffff)",
+            "conic-gradient(from 180deg, #6fc3f0, #2c4a6e, #0f1620, #6fc3f0)",
         }}
       />
       <div className="absolute inset-0 bg-hudgrid opacity-[0.05]" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* top meta row, mirrors the MEASURE / ANALYZE / IMPLEMENT / MORE strip */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-16">
+        <div className="flex items-center justify-between border-b border-sky-400/10 pb-4 mb-16">
           <div className="flex items-center gap-6">
-            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-white/40">
+            <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-sky-300/50">
               Ambassador Program
             </span>
           </div>
-          <div className="flex items-center gap-2 text-white/30">
+          <div className="flex items-center gap-2 text-sky-300/40">
             {CHECKER}
             <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
               {REWARDS.length} reward tiers
@@ -91,23 +91,23 @@ export default function Ambassador() {
         {/* reward dashboard */}
         <div className="mb-28">
           <div className="flex items-center gap-4 mb-8">
-            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-white/50 whitespace-nowrap">
+            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-sky-300/60 whitespace-nowrap">
               Reward Dashboard
             </h3>
-            <span className="h-px flex-1 bg-white/10" />
+            <span className="h-px flex-1 bg-sky-400/10" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-sky-400/10 border border-sky-400/10">
             {REWARDS.map((r, i) => (
               <div
                 key={r.title}
-                className="group relative bg-[#0a0a0a] hover:bg-white/[0.03] p-6 transition-colors duration-300"
+                className="group relative bg-[#05070a] hover:bg-sky-400/[0.04] p-6 transition-colors duration-300"
               >
-                <div className="absolute top-4 right-5 font-mono text-[10px] tracking-widest text-white/25">
+                <div className="absolute top-4 right-5 font-mono text-[10px] tracking-widest text-sky-300/25">
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
-                <div className="flex items-center justify-center w-10 h-10 border border-white/15 text-white/60 mb-5 group-hover:border-white/40 group-hover:text-white transition-colors duration-300">
+                <div className="flex items-center justify-center w-10 h-10 border border-slate-300/20 text-slate-300/70 mb-5 group-hover:border-sky-400/60 group-hover:text-sky-300 transition-colors duration-300">
                   <RewardIcon index={i} />
                 </div>
 
@@ -119,7 +119,7 @@ export default function Ambassador() {
                 </p>
                 <p className="text-white/40 text-xs leading-relaxed">{r.desc}</p>
 
-                <p className="mt-5 pt-3 border-t border-white/10 font-mono text-[9px] tracking-[0.15em] uppercase text-white/25">
+                <p className="mt-5 pt-3 border-t border-sky-400/10 font-mono text-[9px] tracking-[0.15em] uppercase text-sky-300/25">
                   {r.note}
                 </p>
               </div>
@@ -130,19 +130,19 @@ export default function Ambassador() {
         {/* steps timeline */}
         <div>
           <div className="flex items-center gap-4 mb-14">
-            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-white/50 whitespace-nowrap">
+            <h3 className="font-mono font-medium uppercase text-[11px] tracking-[0.2em] text-sky-300/60 whitespace-nowrap">
               How to Become an Ambassador
             </h3>
-            <span className="h-px flex-1 bg-white/10" />
+            <span className="h-px flex-1 bg-sky-400/10" />
           </div>
 
           <div className="relative">
-            <div className="hidden lg:block absolute top-5 left-0 right-0 h-px bg-white/10" />
+            <div className="hidden lg:block absolute top-5 left-0 right-0 h-px bg-sky-400/10" />
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-4">
               {AMBASSADOR_STEPS.map((s) => (
                 <div key={s.n} className="relative flex flex-col items-center text-center">
-                  <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#0a0a0a] border border-white/20 font-mono font-medium text-white/70 text-xs mb-5">
+                  <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#05070a] border border-sky-400/30 font-mono font-medium text-sky-300/80 text-xs mb-5">
                     {String(s.n).padStart(2, "0")}
                   </div>
                   <h4 className="font-sans font-medium text-sm text-white mb-1.5">

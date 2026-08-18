@@ -11,6 +11,7 @@ import Ambassador from "./components/Ambassador";
 import Community from "./components/Community";
 import FinalCTA from "./components/FinalCTA";
 import Footer from "./components/Footer";
+import Images from "./components/Images";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <Images />
         <Gameplay />
         {/* <Trailer /> */}
         <CoreGameplay />

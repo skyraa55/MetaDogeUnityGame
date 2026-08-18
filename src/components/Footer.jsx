@@ -1,5 +1,6 @@
 import { LINKS, TOKEN, NAV_LINKS } from "../data/site";
 
+
 const SOCIALS = [
   {
     label: "X",
@@ -29,24 +30,24 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-black pt-8">
       {/* Animated glowing top border */}
       <div className="absolute inset-x-0 top-0 h-px overflow-hidden">
-        <div className="h-full w-1/3 animate-[shimmer_4s_linear_infinite] bg-gradient-to-r from-transparent via-red-500 to-transparent" />
+        <div className="h-full w-1/3 animate-[shimmer_4s_linear_infinite] bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
       </div>
       <style>{`
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
       `}</style>
 
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[900px] -translate-x-1/2 rounded-full bg-red-700/15 blur-[180px]" />
+      <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[900px] -translate-x-1/2 rounded-full bg-slate-600/20 blur-[180px]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* CTA strip */}
         <div
-          className="relative mb-16 flex flex-col items-center gap-6 border border-red-600/30 bg-gradient-to-br from-red-950/40 via-black to-black px-8 py-12 text-center sm:px-16"
+          className="relative mb-16 flex flex-col items-center gap-6 border border-sky-500/30 bg-gradient-to-br from-slate-900/60 via-black to-black px-8 py-12 text-center sm:px-16"
           style={{ clipPath: "polygon(0 0, 100% 0, 100% 88%, 96% 100%, 0 100%)" }}
         >
          
           <h3 className="font-display text-3xl font-extrabold uppercase italic tracking-tight text-white sm:text-4xl">
-            Don't Miss <span className="text-red-500">The Drop</span>
+            Don't Miss <span className="text-sky-400">The Drop</span>
           </h3>
           <p className="max-w-md text-sm text-white/50">
             Grab early access to the token, get whitelisted for the next mint,
@@ -54,7 +55,7 @@ export default function Footer() {
           </p>
           <a
             href={LINKS.googlePlay}
-            className="group relative overflow-hidden bg-red-600 px-8 py-3 font-display text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-red-500"
+            className="group relative overflow-hidden bg-gradient-to-r from-slate-600 via-sky-600 to-sky-400 px-8 py-3 font-display text-sm font-bold uppercase tracking-widest text-white transition-colors hover:from-slate-500 hover:via-sky-500 hover:to-sky-300"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%)" }}
           >
             <span className="relative z-10">Join Now →</span>
@@ -65,11 +66,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div>
             <div className="mb-4 flex items-center gap-2.5">
-              <span className="relative flex h-11 w-11 items-center justify-center border border-red-600/50 bg-red-600/10 shadow-[0_0_20px_-6px_rgba(220,38,38,0.7)]">
-                <span className="font-display text-lg font-black text-red-500">M</span>
+              <span className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-slate-300/40 bg-slate-800/40 shadow-[0_0_20px_-6px_rgba(56,110,158,0.7)]">
+                <img
+                  src="/assets/log.png"
+                  alt="MetaDogeUnity logo"
+                  className="h-full w-full object-cover"
+                />
               </span>
               <span className="font-display text-lg font-bold tracking-wider text-white">
-                META<span className="text-red-600">DOGE</span>UNITY
+                META<span className="text-sky-400">DOGE</span>UNITY
               </span>
             </div>
             <p className="mb-1 font-display text-xs font-bold uppercase tracking-[0.25em] text-white/50">
@@ -87,7 +92,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="group flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.03] text-white/50 transition-all duration-300 hover:-translate-y-1 hover:border-red-600/60 hover:bg-red-600 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(220,38,38,0.8)]"
+                  className="group flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.03] text-white/50 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:bg-sky-500 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(56,169,225,0.8)]"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
                     {s.icon}
@@ -99,7 +104,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-red-600" />
+              <span className="h-1.5 w-1.5 bg-sky-400" />
               Navigation
             </p>
             <ul className="space-y-2.5">
@@ -107,9 +112,9 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="group inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-red-500"
+                    className="group inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-sky-400"
                   >
-                    <span className="h-px w-0 bg-red-500 transition-all duration-300 group-hover:w-3" />
+                    <span className="h-px w-0 bg-sky-400 transition-all duration-300 group-hover:w-3" />
                     {l.label}
                   </a>
                 </li>
@@ -119,7 +124,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-red-600" />
+              <span className="h-1.5 w-1.5 bg-sky-400" />
               Status
             </p>
             <ul className="space-y-3 text-sm text-white/70">
@@ -142,14 +147,14 @@ export default function Footer() {
           </div>
 
           <div
-            className="relative border border-red-600/30 bg-gradient-to-b from-white/[0.04] to-white/[0.01] px-5 py-4"
+            className="relative border border-sky-500/30 bg-gradient-to-b from-white/[0.04] to-white/[0.01] px-5 py-4"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%)" }}
           >
             <p className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-red-600" />
+              <span className="h-1.5 w-1.5 bg-sky-400" />
               Contract Address
             </p>
-            <p className="mb-2 font-display text-sm font-bold text-red-500">
+            <p className="mb-2 font-display text-sm font-bold text-sky-400">
               {TOKEN.symbol} · {TOKEN.chain}
             </p>
             <p className="break-all border border-white/10 bg-black/40 px-2.5 py-2 font-mono text-[11px] leading-relaxed text-white/50">
@@ -164,7 +169,7 @@ export default function Footer() {
             © {new Date().getFullYear()} MetaDogeUnity. All rights reserved.
           </p>
           <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/30">
-            <span className="h-1.5 w-1.5 bg-red-600" />
+            <span className="h-1.5 w-1.5 bg-sky-400" />
             Built on BNB Chain
           </p>
         </div>

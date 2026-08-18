@@ -30,7 +30,7 @@ export default function Gameplay() {
   return (
     <section id="gameplay" className="relative py-24 sm:py-32 bg-black overflow-hidden">
       <div className="absolute inset-0 bg-hudgrid opacity-30" />
-      <div className="pointer-events-none absolute -top-40 right-0 w-[36rem] h-[36rem] bg-red-600/10 blur-[140px] rounded-full" />
+      <div className="pointer-events-none absolute -top-40 right-0 w-[36rem] h-[36rem] bg-sky-500/10 blur-[140px] rounded-full" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* Header row w/ mission readout */}
@@ -38,7 +38,7 @@ export default function Gameplay() {
           <div className="max-w-xl">
             <Eyebrow>Live Combat · Feed 03</Eyebrow>
             <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-normal text-white">
-              Enter the <span className="text-red-600">Battlefield</span>
+              Enter the <span className="text-sky-400">Battlefield</span>
             </h2>
             <p className="mt-4 text-white/60 text-lg leading-relaxed">
               Step into fast-paced multiplayer combat where skill, strategy
@@ -52,8 +52,8 @@ export default function Gameplay() {
 
         {/* Mission status strip — tactical readout, echoes the MEASURE/ANALYZE nav bar */}
         <div className="flex items-center gap-6 sm:gap-10 py-3 mb-8 border-y border-white/10 font-mono text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-white/40 overflow-x-auto">
-          <span className="flex items-center gap-2 text-red-600 shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+          <span className="flex items-center gap-2 text-sky-400 shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
             Feed Live
           </span>
           <span className="shrink-0">Theatre / Frontier Belt</span>
@@ -91,11 +91,11 @@ export default function Gameplay() {
 
               <div className="absolute inset-0 bg-hudgrid opacity-15 mix-blend-overlay" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/5" />
-              <div className="absolute inset-0 border border-red-600/0 group-hover:border-red-600/40 transition-colors duration-300" />
+              <div className="absolute inset-0 border border-sky-400/0 group-hover:border-sky-400/40 transition-colors duration-300" />
 
               {/* Top-right rec + coords */}
               <div className="absolute top-4 right-4 text-right z-10">
-                <div className="flex items-center justify-end gap-1.5 font-mono text-[10px] tracking-widest text-red-600 uppercase">
+                <div className="flex items-center justify-end gap-1.5 font-mono text-[10px] tracking-widest text-sky-400 uppercase">
                   REC ● {s.id}
                 </div>
                 <div className="mt-1 font-mono text-[9px] tracking-widest text-white/35 uppercase">
@@ -116,7 +116,7 @@ export default function Gameplay() {
                     <p className="font-mono text-[9px] tracking-widest text-white/35 uppercase">
                       {s.stat.label}
                     </p>
-                    <p className="font-display font-bold text-red-600 text-lg tabular-nums">
+                    <p className="font-display font-bold text-sky-400 text-lg tabular-nums">
                       {s.stat.value}
                     </p>
                   </div>
@@ -131,9 +131,9 @@ export default function Gameplay() {
       <svg width="0" height="0" className="absolute">
         <defs>
           <linearGradient id="gp-chrome" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="45%" stopColor="#8a8a8a" />
-            <stop offset="100%" stopColor="#dc2626" />
+            <stop offset="0%" stopColor="#eaf0f6" />
+            <stop offset="45%" stopColor="#8a9bb0" />
+            <stop offset="100%" stopColor="#38a9e1" />
           </linearGradient>
         </defs>
       </svg>
@@ -141,7 +141,7 @@ export default function Gameplay() {
       <style>{`
         .gp-panel { isolation: isolate; }
         .gp-scan {
-          background: linear-gradient(115deg, transparent 40%, rgba(220,38,38,0.18) 48%, rgba(255,255,255,0.25) 50%, rgba(220,38,38,0.18) 52%, transparent 60%);
+          background: linear-gradient(115deg, transparent 40%, rgba(56,169,225,0.18) 48%, rgba(234,240,246,0.25) 50%, rgba(56,169,225,0.18) 52%, transparent 60%);
           background-size: 250% 250%;
           background-position: 100% 0%;
           transition: background-position 900ms ease, opacity 300ms ease;
