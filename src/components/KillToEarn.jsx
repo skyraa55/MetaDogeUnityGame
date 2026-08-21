@@ -23,7 +23,7 @@ export default function KillToEarn() {
         <div className="mb-16 flex flex-col gap-4 border-b border-white/10 pb-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <Eyebrow>On-Chain Combat</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl">
               Every Kill Matters
             </h2>
           </div>
@@ -64,7 +64,7 @@ export default function KillToEarn() {
                   </div>
                   <div>
                     <p
-                      className={`font-display text-sm font-bold uppercase tracking-wide ${
+                      className={`font-display text-base font-black uppercase tracking-tight ${
                         isLast ? "text-white" : "text-white"
                       }`}
                     >

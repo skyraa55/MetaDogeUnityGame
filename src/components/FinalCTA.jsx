@@ -139,7 +139,7 @@ export default function FinalCTA() {
 
         <div className="grid lg:grid-cols-[1.3fr_auto] gap-16 items-center">
           <div className="relative">
-            <h2 className="font-sans font-medium text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight mb-6">
+            <h2 className="font-display font-black text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight uppercase mb-6">
               <span className="text-white">Ready to enter</span>
               <br />
               <span className="text-sky-500 shimmer-text">the Unity?</span>
@@ -175,7 +175,7 @@ export default function FinalCTA() {
             >
               {STATS.map((stat, i) => (
                 <div key={stat.label}>
-                  <div className="text-lg sm:text-xl font-medium text-white tabular-nums">
+                  <div className="font-display text-xl sm:text-2xl font-black text-white tabular-nums tracking-tight">
                     {i === 0 ? enlisted.toLocaleString() + "+" : stat.value}
                   </div>
                   <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-sky-300/40 mt-1">

@@ -38,7 +38,7 @@ export default function CoreGameplay() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl mb-20 sm:mb-28">
           <Eyebrow>The Loop</Eyebrow>
-          <h2 className="font-sans font-semibold text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-white mb-4">
+          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight uppercase text-white mb-4">
             Built for competition,{" "}
             <span className="text-sky-400">not just for play</span>
           </h2>

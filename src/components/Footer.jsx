@@ -1,7 +1,16 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { LINKS, TOKEN, NAV_LINKS } from "../data/site";
 
-
 const SOCIALS = [
+  {
+    label: "Telegram",
+    href: LINKS.telegram,
+    icon: (
+      <path d="M22.5 3.5 2.7 11.2c-1.2.5-1.2 1.2-.2 1.5l5 1.6 1.9 6c.2.6.5.8 1 .8.5 0 .7-.2 1-.5l2.4-2.3 5 3.7c.9.5 1.5.2 1.8-.8l3.2-15.2c.4-1.4-.4-2-1.3-1.5ZM8.4 14l9.6-6.1c.5-.3.9-.1.5.2l-8 7.4-.3 3-1.5-4.5Z" />
+    ),
+  },
   {
     label: "X",
     href: LINKS.x,
@@ -10,170 +19,273 @@ const SOCIALS = [
     ),
   },
   {
-    label: "YouTube",
-    href: LINKS.youtube,
+    label: "Instagram",
+    href: LINKS.instagram,
     icon: (
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+      <path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.3.06 2.2.27 2.9.55.8.32 1.4.73 2 1.36.63.63 1.04 1.2 1.36 2 .28.7.49 1.6.55 2.9.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.3-.27 2.2-.55 2.9a5.9 5.9 0 0 1-1.36 2 5.9 5.9 0 0 1-2 1.36c-.7.28-1.6.49-2.9.55-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.3-.06-2.2-.27-2.9-.55a5.9 5.9 0 0 1-2-1.36 5.9 5.9 0 0 1-1.36-2c-.28-.7-.49-1.6-.55-2.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.3.27-2.2.55-2.9.32-.8.73-1.37 1.36-2C4.81 1.58 5.38 1.17 6.18.85c.7-.28 1.6-.49 2.9-.55C10.4.23 10.8.23 12 2.2Zm0 1.8c-3.16 0-3.53 0-4.77.07-1.06.05-1.63.23-2.02.38-.5.2-.87.43-1.25.81a3.4 3.4 0 0 0-.81 1.25c-.15.4-.33.96-.38 2.02C2.7 9.47 2.7 9.84 2.7 13s0 3.53.07 4.77c.05 1.06.23 1.63.38 2.02.2.5.43.87.81 1.25.38.38.75.61 1.25.81.4.15.96.33 2.02.38 1.24.06 1.6.07 4.77.07s3.53 0 4.77-.07c1.06-.05 1.63-.23 2.02-.38.5-.2.87-.43 1.25-.81.38-.38.61-.75.81-1.25.15-.4.33-.96.38-2.02.06-1.24.07-1.6.07-4.77s0-3.53-.07-4.77c-.05-1.06-.23-1.63-.38-2.02a3.36 3.36 0 0 0-.81-1.25 3.4 3.4 0 0 0-1.25-.81c-.4-.15-.96-.33-2.02-.38C15.53 4 15.16 4 12 4Zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2Zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm4.8-2.9a1.08 1.08 0 1 1 0 2.15 1.08 1.08 0 0 1 0-2.15Z" />
     ),
   },
   {
-    label: "Google Play",
-    href: LINKS.googlePlay,
+    label: "TikTok",
+    href: LINKS.tiktok,
     icon: (
-      <path d="M3 2.5v19a1 1 0 0 0 1.5.87l16-9.5a1 1 0 0 0 0-1.74l-16-9.5A1 1 0 0 0 3 2.5Zm12.5 9.5-3.6-3.6L15 4.9l4.9 3.4-4.4 3.7Zm-3.6 1.6 3.6-3.6 4.4 3.7L15 17.1l-3.1-3.5Z" />
+      <path d="M16.6 1.3c.3 2.3 1.8 4 4 4.3v3a7.3 7.3 0 0 1-4-1.2v6.9a6.6 6.6 0 1 1-6.6-6.6c.3 0 .6 0 .9.05v3.1a3.5 3.5 0 1 0 2.5 3.35V1.3h3.2Z" />
+    ),
+  },
+  {
+    label: "Discord",
+    href: LINKS.discord,
+    icon: (
+      <path d="M20.3 4.9A18.3 18.3 0 0 0 15.9 3.5c-.19.34-.4.8-.55 1.16a17 17 0 0 0-6.7 0c-.15-.36-.37-.82-.56-1.16a18.2 18.2 0 0 0-4.4 1.4C.9 8.9.2 12.8.5 16.6a18.3 18.3 0 0 0 5.6 2.8c.45-.62.85-1.28 1.2-1.98a11.9 11.9 0 0 1-1.9-.9c.16-.12.32-.24.47-.37 3.65 1.68 7.6 1.68 11.2 0 .16.13.31.25.47.37-.6.36-1.24.66-1.9.9.35.7.75 1.36 1.2 1.98a18.2 18.2 0 0 0 5.6-2.8c.35-4.4-.75-8.26-3.1-11.7ZM8.68 14.3c-1.1 0-2-1-2-2.25s.88-2.26 2-2.26 2.02 1.02 2 2.26c0 1.24-.89 2.25-2 2.25Zm6.65 0c-1.1 0-2-1-2-2.25s.88-2.26 2-2.26 2.02 1.02 2 2.26c0 1.24-.88 2.25-2 2.25Z" />
     ),
   },
 ];
 
+const QUICK_LINKS = [
+  { label: "Privacy Policy", href: LINKS.privacyPolicy ?? "#" },
+  { label: "Disclaimer", href: LINKS.disclaimer ?? "#" },
+  { label: "Terms of services", href: LINKS.terms ?? "#" },
+];
+
+// Height of the ZENITH panel itself. Kept close to the text's own
+// rendered height so there's minimal empty space above/below it.
+const ZENITH_HEIGHT = 180;
+
+// How much extra scroll distance ZENITH stays "locked" flush against the
+// bottom of the screen after the shutter has fully lifted, before the page
+// finally runs out. Kept short so ZENITH shows briefly rather than eating
+// up a big stretch of scroll.
+const ZENITH_HOLD = 40;
+
+// Scroll distance (px) over which the footer lifts from fully closed
+// (normal footer, sitting in place) to fully open (lifted away, ZENITH
+// revealed). Kept short so the whole effect is quick, not a long
+// scroll-jacked stretch.
+const CURTAIN_TRAVEL = 220;
+
+// Shared background for the footer + ZENITH panel.
+const PANEL_BG = "#323950";
+
+/**
+ * Tracks scroll progress (0 -> 1) of a plain, non-sticky element as it
+ * travels up through the viewport. Because the element itself never
+ * sticks, its getBoundingClientRect().top changes continuously with
+ * scroll, which gives a clean, directly reversible 0..1 value to drive
+ * the lift — no open/closed state, just scroll position. Scroll down and
+ * progress rises; scroll back up and it falls right back, so the motion
+ * naturally reverses.
+ */
+function useScrollProgress(ref, distance) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) {
+      setProgress(1);
+      return;
+    }
+
+    let raf = null;
+
+    const compute = () => {
+      raf = null;
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const p = (window.innerHeight - rect.top) / distance;
+      setProgress(Math.min(1, Math.max(0, p)));
+    };
+
+    const onScroll = () => {
+      if (raf == null) raf = window.requestAnimationFrame(compute);
+    };
+
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf != null) window.cancelAnimationFrame(raf);
+    };
+  }, [ref, distance]);
+
+  return progress;
+}
+
 export default function Footer() {
+  const trackRef = useRef(null);
+  const footerRef = useRef(null);
+  const progress = useScrollProgress(trackRef, CURTAIN_TRAVEL);
+  const [footerHeight, setFooterHeight] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const el = footerRef.current;
+    if (!el) return;
+
+    const measure = () => setFooterHeight(el.offsetHeight);
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <footer className="relative overflow-hidden bg-black pt-8">
-      {/* Animated glowing top border */}
-      <div className="absolute inset-x-0 top-0 h-px overflow-hidden">
-        <div className="h-full w-1/3 animate-[shimmer_4s_linear_infinite] bg-gradient-to-r from-transparent via-sky-400 to-transparent" />
-      </div>
-      <style>{`
-        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
-      `}</style>
+    <div className="relative" style={{ backgroundColor: PANEL_BG }}>
+      {/*
+        SHUTTER WRAPPER — sticky, pinned directly above the ZENITH stage
+        once it reaches that resting position. Its height is measured from
+        the real footer content and then collapsed in lockstep with scroll
+        progress (0 -> 1), so the reserved space shrinks away to nothing
+        as it opens instead of leaving an empty gap. Because progress is
+        driven purely by scroll position, scrolling back up grows it right
+        back to full height (the reverse motion).
+      */}
+      <div
+        className="sticky z-10 overflow-hidden"
+        style={{
+          bottom: ZENITH_HEIGHT,
+          backgroundColor: PANEL_BG,
+          height: footerHeight ? footerHeight * (1 - progress) : "auto",
+        }}
+      >
+        <footer ref={footerRef} className="relative">
+          <div className="mx-auto max-w-7xl px-6 pb-6 pt-6 sm:px-10">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Brand */}
+              <div className="lg:col-span-1">
+                <div className="mb-3 flex items-center gap-2">
+                  <img
+                    src="/assets/log.png"
+                    alt="MetaDogeUnity logo"
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                  <span className="font-display text-base font-bold leading-tight text-white">
+                    META<span className="text-sky-400">DOGE</span>
+                    <br />
+                    UNITY
+                  </span>
+                </div>
+                <p className="max-w-xs text-sm leading-relaxed text-white/50">
+                  Zenith Gaming Studio LLC established in Dubai, UAE, presents
+                  MetaDogeUnity-AAA Third person shooting Open World game.
+                </p>
+                <div className="mt-4 flex gap-2.5">
+                  {SOCIALS.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-sky-400/60 hover:text-sky-400"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+                        {s.icon}
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
 
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-96 w-[900px] -translate-x-1/2 rounded-full bg-slate-600/20 blur-[180px]" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px]" />
+              {/* Quick Links */}
+              <div>
+                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                  Quick Links
+                </p>
+                <ul className="space-y-2.5">
+                  {QUICK_LINKS.map((l) => (
+                    <li key={l.label}>
+                      <a
+                        href={l.href}
+                        className="text-sm text-white/50 transition-colors hover:text-sky-400"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        {/* CTA strip */}
-        <div
-          className="relative mb-16 flex flex-col items-center gap-6 border border-sky-500/30 bg-gradient-to-br from-slate-900/60 via-black to-black px-8 py-12 text-center sm:px-16"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% 88%, 96% 100%, 0 100%)" }}
-        >
-         
-          <h3 className="font-display text-3xl font-extrabold uppercase italic tracking-tight text-white sm:text-4xl">
-            Don't Miss <span className="text-sky-400">The Drop</span>
-          </h3>
-          <p className="max-w-md text-sm text-white/50">
-            Grab early access to the token, get whitelisted for the next mint,
-            and stay ahead of the pack.
-          </p>
-          <a
-            href={LINKS.googlePlay}
-            className="group relative overflow-hidden bg-gradient-to-r from-slate-600 via-sky-600 to-sky-400 px-8 py-3 font-display text-sm font-bold uppercase tracking-widest text-white transition-colors hover:from-slate-500 hover:via-sky-500 hover:to-sky-300"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 70%, 88% 100%, 0 100%)" }}
-          >
-            <span className="relative z-10">Join Now →</span>
-          </a>
-        </div>
+              {/* Navigations */}
+              <div>
+                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                  Navigations
+                </p>
+                <ul className="space-y-2.5">
+                  {NAV_LINKS.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        className="text-sm text-white/50 transition-colors hover:text-sky-400"
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-        {/* Brand + columns */}
-        <div className="grid grid-cols-1 gap-12 border-b border-white/10 pb-14 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
-          <div>
-            <div className="mb-4 flex items-center gap-2.5">
-              <span className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-slate-300/40 bg-slate-800/40 shadow-[0_0_20px_-6px_rgba(56,110,158,0.7)]">
-                <img
-                  src="/assets/log.png"
-                  alt="MetaDogeUnity logo"
-                  className="h-full w-full object-cover"
-                />
-              </span>
-              <span className="font-display text-lg font-bold tracking-wider text-white">
-                META<span className="text-sky-400">DOGE</span>UNITY
-              </span>
-            </div>
-            <p className="mb-1 font-display text-xs font-bold uppercase tracking-[0.25em] text-white/50">
-              Play. Fight. Earn.
-            </p>
-            <p className="mb-6 mt-4 max-w-xs text-xs leading-relaxed text-white/30">
-              Zenith Studio LLC Abu Dhabi, UAE. Building the next generation
-              of Web3 gaming, one drop at a time.
-            </p>
-            <div className="flex gap-2.5">
-              {SOCIALS.map((s) => (
+              {/* Contact */}
+              <div>
+                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                  Contact Us
+                </p>
                 <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="group flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.03] text-white/50 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:bg-sky-500 hover:text-white hover:shadow-[0_0_20px_-4px_rgba(56,169,225,0.8)]"
+                  href={`mailto:${LINKS.contactEmail ?? "contact@metadogeunity.in"}`}
+                  className="text-sm text-white/50 transition-colors hover:text-sky-400"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-                    {s.icon}
-                  </svg>
+                  {LINKS.contactEmail ?? "contact@metadogeunity.in"}
                 </a>
-              ))}
+
+                {TOKEN?.contract && (
+                  <div className="mt-6">
+                    <p className="mb-1 text-xs uppercase tracking-wide text-white/40">
+                      {TOKEN.symbol} · {TOKEN.chain}
+                    </p>
+                    <p className="break-all rounded border border-white/10 bg-black/20 px-2.5 py-2 font-mono text-[11px] leading-relaxed text-white/50">
+                      {TOKEN.contract}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
-          <div>
-            <p className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-sky-400" />
-              Navigation
-            </p>
-            <ul className="space-y-2.5">
-              {NAV_LINKS.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="group inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-sky-400"
-                  >
-                    <span className="h-px w-0 bg-sky-400 transition-all duration-300 group-hover:w-3" />
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="mb-4 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-sky-400" />
-              Status
-            </p>
-            <ul className="space-y-3 text-sm text-white/70">
-              <li className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                </span>
-                Presale live
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-white/20" />
-                Audit pending
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-white/20" />
-                CEX listing Q1
-              </li>
-            </ul>
-          </div>
-
-          <div
-            className="relative border border-sky-500/30 bg-gradient-to-b from-white/[0.04] to-white/[0.01] px-5 py-4"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%)" }}
-          >
-            <p className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/40">
-              <span className="h-1.5 w-1.5 bg-sky-400" />
-              Contract Address
-            </p>
-            <p className="mb-2 font-display text-sm font-bold text-sky-400">
-              {TOKEN.symbol} · {TOKEN.chain}
-            </p>
-            <p className="break-all border border-white/10 bg-black/40 px-2.5 py-2 font-mono text-[11px] leading-relaxed text-white/50">
-              {TOKEN.contract}
+          {/* Bottom bar */}
+          <div className="border-t border-white/10 py-3 text-center">
+            <p className="text-xs text-white/40">
+              © {new Date().getFullYear()} MetaDogeUnity. All rights reserved.
             </p>
           </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 py-8 sm:flex-row">
-          <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} MetaDogeUnity. All rights reserved.
-          </p>
-          <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/30">
-            <span className="h-1.5 w-1.5 bg-sky-400" />
-            Built on BNB Chain
-          </p>
-        </div>
+        </footer>
       </div>
-    </footer>
+
+      {/* Scroll track — its height is the distance the shutter takes to
+          fully lift. This plain element is what useScrollProgress reads. */}
+      <div ref={trackRef} style={{ height: CURTAIN_TRAVEL }} aria-hidden="true" />
+
+      {/*
+        ZENITH — position: sticky; bottom: 0. Sits pinned at the very
+        bottom of the viewport, revealed as the shutter above rolls away.
+      */}
+      <div
+        className="sticky bottom-0 z-0 flex items-center justify-center overflow-hidden"
+        style={{ height: ZENITH_HEIGHT }}
+        aria-hidden="true"
+      >
+        <h2 className="select-none whitespace-nowrap font-display text-[13vw] font-extrabold uppercase leading-none tracking-tight text-white/90 sm:text-[9vw]">
+          ZENITH
+        </h2>
+      </div>
+
+      <div style={{ height: ZENITH_HOLD }} aria-hidden="true" />
+    </div>
   );
 }

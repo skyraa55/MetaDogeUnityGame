@@ -72,7 +72,7 @@ export default function Ambassador() {
 
         {/* header */}
         <div className="max-w-2xl mx-auto mb-24 text-center">
-          <h2 className="font-sans font-medium text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.05] text-white">
+          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[0.95] uppercase text-white">
             $MU Ambassador Program
           </h2>
 
@@ -111,10 +111,10 @@ export default function Ambassador() {
                   <RewardIcon index={i} />
                 </div>
 
-                <h4 className="font-sans font-medium text-sm text-white mb-1.5">
+                <h4 className="font-display font-black text-base text-white mb-1.5 uppercase tracking-tight">
                   {r.title}
                 </h4>
-                <p className="font-sans font-medium text-white text-xl mb-3 tracking-tight">
+                <p className="font-display font-black text-white text-2xl mb-3 tracking-tight">
                   {r.amount}
                 </p>
                 <p className="text-white/40 text-xs leading-relaxed">{r.desc}</p>
@@ -145,7 +145,7 @@ export default function Ambassador() {
                   <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#05070a] border border-sky-400/30 font-mono font-medium text-sky-300/80 text-xs mb-5">
                     {String(s.n).padStart(2, "0")}
                   </div>
-                  <h4 className="font-sans font-medium text-sm text-white mb-1.5">
+                  <h4 className="font-display font-black text-base text-white mb-1.5 uppercase tracking-tight">
                     {s.title}
                   </h4>
                   <p className="text-white/40 text-xs leading-relaxed max-w-[160px]">

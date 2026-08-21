@@ -71,7 +71,7 @@ export default function Community() {
             <Eyebrow>Community</Eyebrow>
           </div>
 
-          <h2 className="mb-4 font-display text-4xl font-extrabold uppercase italic tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h2 className="mb-4 font-display text-5xl font-black uppercase italic tracking-tight leading-[0.95] text-white sm:text-6xl md:text-7xl">
             Join the <span className="text-sky-400">Unity</span>
           </h2>
 
@@ -121,7 +121,7 @@ export default function Community() {
               </span>
 
               <div>
-                <p className="font-display text-base font-bold uppercase tracking-wide text-white">
+                <p className="font-display text-lg font-black uppercase tracking-tight text-white">
                   {s.label}
                 </p>
                 <p

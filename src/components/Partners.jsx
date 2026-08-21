@@ -38,7 +38,7 @@ export default function Partners() {
         <div className="flex justify-center">
           <Eyebrow>Our Partners</Eyebrow>
         </div>
-        <h2 className="mb-3 font-display text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl">
+        <h2 className="mb-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl">
           Building the Unity <span className="text-sky-400">Together</span>
         </h2>
         <p className="mx-auto max-w-xl text-gray-400">

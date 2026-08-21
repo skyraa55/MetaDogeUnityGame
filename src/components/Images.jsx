@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef, useState } from 'react';
 
 import one from './images/one.jpeg';     // squad lineup — hero
@@ -88,7 +86,7 @@ function Row({ index, title, titleEm, paragraph, img, alt, reverse = false, live
           <div className="font-['JetBrains_Mono'] text-[13px] tracking-[2px] text-[#4A6484] mb-3.5">
             {index}
           </div>
-          <h2 className="font-['Rajdhani'] font-bold text-[clamp(1.9rem,3.4vw,2.9rem)] leading-tight mb-4 text-[#F2F5F9]">
+          <h2 className="font-['Lilita_One'] uppercase leading-[0.98] text-[clamp(2.4rem,4.4vw,3.8rem)] mb-5 text-[#F2F5F9]">
             {title}
             <span className="text-[#38A9E1]">{titleEm}</span>
           </h2>
@@ -134,7 +132,7 @@ function HeroImage() {
       </Reveal>
 
       <Reveal>
-        <h1 className="font-['Rajdhani'] font-bold uppercase leading-[0.94] text-[clamp(2.6rem,7.5vw,6.2rem)] tracking-wide bg-gradient-to-b from-[#EAF0F6] via-[#C7D1DE] to-[#38A9E1] bg-clip-text text-transparent">
+        <h1 className="font-['Lilita_One'] uppercase leading-[0.92] text-[clamp(3rem,8.5vw,7.5rem)] tracking-wide bg-gradient-to-b from-[#EAF0F6] via-[#C7D1DE] to-[#38A9E1] bg-clip-text text-transparent">
           THE FIGHTERS
           <br />
           HAVE ARRIVED
@@ -174,7 +172,7 @@ function Loop() {
         <div className="font-['JetBrains_Mono'] text-[13px] tracking-[2px] text-[#4A6484] mb-3.5">
           HOW IT WORKS
         </div>
-        <h2 className="font-['Rajdhani'] font-bold text-[clamp(2rem,4vw,3.2rem)] mb-3.5 text-[#F2F5F9]">
+        <h2 className="font-['Lilita_One'] uppercase text-[clamp(2.4rem,5vw,4rem)] mb-3.5 text-[#F2F5F9]">
           The core loop
         </h2>
         <p className="text-[#8B98A8] leading-relaxed">
@@ -190,7 +188,7 @@ function Loop() {
       </Reveal>
 
       <Reveal>
-        <div className="flex justify-center items-center gap-0 mt-8 font-['Rajdhani'] font-bold tracking-[2px] text-base">
+        <div className="flex justify-center items-center gap-0 mt-8 font-['Lilita_One'] uppercase tracking-[2px] text-lg">
           <span className="text-[#38A9E1] px-4">KILL</span>
           <span className="text-[#4A6484] px-2">→</span>
           <span className="text-[#38A9E1] px-4">EARN</span>

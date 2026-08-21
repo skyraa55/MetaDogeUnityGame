@@ -37,7 +37,7 @@ export default function Gameplay() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
           <div className="max-w-xl">
             <Eyebrow>Live Combat · Feed 03</Eyebrow>
-            <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl leading-[1.1] tracking-normal text-white">
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight uppercase text-white">
               Enter the <span className="text-sky-400">Battlefield</span>
             </h2>
             <p className="mt-4 text-white/60 text-lg leading-relaxed">
@@ -109,14 +109,14 @@ export default function Gameplay() {
                   Gameplay Preview
                 </p>
                 <div className="flex items-end justify-between gap-4">
-                  <p className={`font-display font-bold uppercase text-white leading-tight ${s.featured ? "text-2xl sm:text-3xl" : "text-lg"}`}>
+                  <p className={`font-display font-black uppercase text-white leading-[0.95] tracking-tight ${s.featured ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"}`}>
                     {s.label}
                   </p>
                   <div className="shrink-0 text-right">
                     <p className="font-mono text-[9px] tracking-widest text-white/35 uppercase">
                       {s.stat.label}
                     </p>
-                    <p className="font-display font-bold text-sky-400 text-lg tabular-nums">
+                    <p className="font-display font-black text-sky-400 text-xl tabular-nums">
                       {s.stat.value}
                     </p>
                   </div>

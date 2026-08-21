@@ -71,7 +71,7 @@ export default function Characters() {
         </div>
 
         <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
-          <h2 className="font-sans font-medium text-3xl sm:text-4xl md:text-5xl leading-[1.05] tracking-tight text-white max-w-xl">
+          <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight uppercase text-white max-w-xl">
             Choose your fighter
           </h2>
           <p className="max-w-xs text-sm text-white/40 leading-relaxed">
@@ -127,7 +127,7 @@ export default function Characters() {
                   <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-sky-300/40 mb-1">
                     {c.class}
                   </p>
-                  <h3 className="font-sans font-medium text-base sm:text-lg leading-tight text-white">
+                  <h3 className="font-display font-black text-lg sm:text-xl leading-tight uppercase tracking-tight text-white">
                     {c.name}
                   </h3>
                   <p className="text-white/35 text-xs mt-0.5 font-mono">

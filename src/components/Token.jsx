@@ -64,7 +64,7 @@ export default function Token() {
           <p className="font-mono text-[11px] tracking-[0.3em] uppercase text-sky-300/50 mb-4">
             Powering the Unity
           </p>
-          <h2 className="font-sans font-medium uppercase leading-none tracking-tight text-6xl sm:text-7xl md:text-8xl text-white">
+          <h2 className="font-display font-black uppercase leading-none tracking-tight text-7xl sm:text-8xl md:text-9xl text-white">
             {TOKEN.symbol}
           </h2>
         </div>
