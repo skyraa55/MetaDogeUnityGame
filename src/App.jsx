@@ -15,7 +15,7 @@ import Images from "./components/Images";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-ink text-paper overflow-x-hidden">
+    <div className="min-h-screen bg-ink text-paper">
       <Navbar />
       <main>
         <Hero />

@@ -18,6 +18,7 @@ html {
 
 body {
   background-color: #060B14;
+  overflow-x: hidden;
   background-image:
     radial-gradient(circle at 12% 0%, rgba(34,211,238,0.10), transparent 45%),
     radial-gradient(circle at 88% 12%, rgba(45,212,191,0.08), transparent 40%),

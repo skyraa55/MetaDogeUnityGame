@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { LINKS, TOKEN, NAV_LINKS } from "../data/site";
 
 const SOCIALS = [
@@ -47,245 +46,151 @@ const QUICK_LINKS = [
   { label: "Terms of services", href: LINKS.terms ?? "#" },
 ];
 
-// Height of the ZENITH panel itself. Kept close to the text's own
-// rendered height so there's minimal empty space above/below it.
-const ZENITH_HEIGHT = 180;
-
-// How much extra scroll distance ZENITH stays "locked" flush against the
-// bottom of the screen after the shutter has fully lifted, before the page
-// finally runs out. Kept short so ZENITH shows briefly rather than eating
-// up a big stretch of scroll.
-const ZENITH_HOLD = 40;
-
-// Scroll distance (px) over which the footer lifts from fully closed
-// (normal footer, sitting in place) to fully open (lifted away, ZENITH
-// revealed). Kept short so the whole effect is quick, not a long
-// scroll-jacked stretch.
-const CURTAIN_TRAVEL = 220;
-
 // Shared background for the footer + ZENITH panel.
 const PANEL_BG = "#323950";
 
-/**
- * Tracks scroll progress (0 -> 1) of a plain, non-sticky element as it
- * travels up through the viewport. Because the element itself never
- * sticks, its getBoundingClientRect().top changes continuously with
- * scroll, which gives a clean, directly reversible 0..1 value to drive
- * the lift — no open/closed state, just scroll position. Scroll down and
- * progress rises; scroll back up and it falls right back, so the motion
- * naturally reverses.
- */
-function useScrollProgress(ref, distance) {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReducedMotion) {
-      setProgress(1);
-      return;
-    }
-
-    let raf = null;
-
-    const compute = () => {
-      raf = null;
-      const el = ref.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const p = (window.innerHeight - rect.top) / distance;
-      setProgress(Math.min(1, Math.max(0, p)));
-    };
-
-    const onScroll = () => {
-      if (raf == null) raf = window.requestAnimationFrame(compute);
-    };
-
-    compute();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (raf != null) window.cancelAnimationFrame(raf);
-    };
-  }, [ref, distance]);
-
-  return progress;
-}
+// Height of the ZENITH reveal panel. This also controls how much scroll
+// distance the reveal animation takes — taller = slower, smoother reveal.
+const ZENITH_HEIGHT = 200;
 
 export default function Footer() {
-  const trackRef = useRef(null);
-  const footerRef = useRef(null);
-  const progress = useScrollProgress(trackRef, CURTAIN_TRAVEL);
-  const [footerHeight, setFooterHeight] = useState(0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const el = footerRef.current;
-    if (!el) return;
-
-    const measure = () => setFooterHeight(el.offsetHeight);
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
-
   return (
-    <div className="relative" style={{ backgroundColor: PANEL_BG }}>
+    <div style={{ backgroundColor: PANEL_BG }}>
       {/*
-        SHUTTER WRAPPER — sticky, pinned directly above the ZENITH stage
-        once it reaches that resting position. Its height is measured from
-        the real footer content and then collapsed in lockstep with scroll
-        progress (0 -> 1), so the reserved space shrinks away to nothing
-        as it opens instead of leaving an empty gap. Because progress is
-        driven purely by scroll position, scrolling back up grows it right
-        back to full height (the reverse motion).
+        FOOTER CONTENT — position: relative + z-10 + solid background.
+        This sits ON TOP of the sticky ZENITH panel behind it.
+        As the user scrolls down, this footer naturally scrolls up,
+        gradually uncovering the ZENITH text pinned at the viewport bottom.
+        Scrolling back up reverses the effect — the footer slides back
+        down and covers ZENITH again.
       */}
-      <div
-        className="sticky z-10 overflow-hidden"
-        style={{
-          bottom: ZENITH_HEIGHT,
-          backgroundColor: PANEL_BG,
-          height: footerHeight ? footerHeight * (1 - progress) : "auto",
-        }}
-      >
-        <footer ref={footerRef} className="relative">
-          <div className="mx-auto max-w-7xl px-6 pb-6 pt-6 sm:px-10">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {/* Brand */}
-              <div className="lg:col-span-1">
-                <div className="mb-3 flex items-center gap-2">
-                  <img
-                    src="/assets/log.png"
-                    alt="MetaDogeUnity logo"
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
-                  <span className="font-display text-base font-bold leading-tight text-white">
-                    META<span className="text-sky-400">DOGE</span>
-                    <br />
-                    UNITY
-                  </span>
-                </div>
-                <p className="max-w-xs text-sm leading-relaxed text-white/50">
-                  Zenith Gaming Studio LLC established in Dubai, UAE, presents
-                  MetaDogeUnity-AAA Third person shooting Open World game.
-                </p>
-                <div className="mt-4 flex gap-2.5">
-                  {SOCIALS.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-sky-400/60 hover:text-sky-400"
-                    >
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
-                        {s.icon}
-                      </svg>
-                    </a>
-                  ))}
-                </div>
+      <footer className="relative z-10" style={{ backgroundColor: PANEL_BG }}>
+        <div className="mx-auto max-w-7xl px-6 pb-6 pt-6 sm:px-10">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Brand */}
+            <div className="lg:col-span-1">
+              <div className="mb-3 flex items-center gap-2">
+                <img
+                  src="/assets/log.png"
+                  alt="MetaDogeUnity logo"
+                  className="h-10 w-10 rounded-full object-cover"
+                />
+                <span className="font-display text-base font-bold leading-tight text-white">
+                  META<span className="text-sky-400">DOGE</span>
+                  <br />
+                  UNITY
+                </span>
               </div>
-
-              {/* Quick Links */}
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
-                  Quick Links
-                </p>
-                <ul className="space-y-2.5">
-                  {QUICK_LINKS.map((l) => (
-                    <li key={l.label}>
-                      <a
-                        href={l.href}
-                        className="text-sm text-white/50 transition-colors hover:text-sky-400"
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Navigations */}
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
-                  Navigations
-                </p>
-                <ul className="space-y-2.5">
-                  {NAV_LINKS.map((l) => (
-                    <li key={l.href}>
-                      <a
-                        href={l.href}
-                        className="text-sm text-white/50 transition-colors hover:text-sky-400"
-                      >
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Contact */}
-              <div>
-                <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
-                  Contact Us
-                </p>
-                <a
-                  href={`mailto:${LINKS.contactEmail ?? "contact@metadogeunity.in"}`}
-                  className="text-sm text-white/50 transition-colors hover:text-sky-400"
-                >
-                  {LINKS.contactEmail ?? "contact@metadogeunity.in"}
-                </a>
-
-                {TOKEN?.contract && (
-                  <div className="mt-6">
-                    <p className="mb-1 text-xs uppercase tracking-wide text-white/40">
-                      {TOKEN.symbol} · {TOKEN.chain}
-                    </p>
-                    <p className="break-all rounded border border-white/10 bg-black/20 px-2.5 py-2 font-mono text-[11px] leading-relaxed text-white/50">
-                      {TOKEN.contract}
-                    </p>
-                  </div>
-                )}
+              <p className="max-w-xs text-sm leading-relaxed text-white/50">
+                Zenith Gaming Studio LLC established in Dubai, UAE, presents
+                MetaDogeUnity-AAA Third person shooting Open World game.
+              </p>
+              <div className="mt-4 flex gap-2.5">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-sky-400/60 hover:text-sky-400"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5">
+                      {s.icon}
+                    </svg>
+                  </a>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Bottom bar */}
-          <div className="border-t border-white/10 py-3 text-center">
-            <p className="text-xs text-white/40">
-              © {new Date().getFullYear()} MetaDogeUnity. All rights reserved.
-            </p>
-          </div>
-        </footer>
-      </div>
+            {/* Quick Links */}
+            <div>
+              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                Quick Links
+              </p>
+              <ul className="space-y-2.5">
+                {QUICK_LINKS.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      className="text-sm text-white/50 transition-colors hover:text-sky-400"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-      {/* Scroll track — its height is the distance the shutter takes to
-          fully lift. This plain element is what useScrollProgress reads. */}
-      <div ref={trackRef} style={{ height: CURTAIN_TRAVEL }} aria-hidden="true" />
+            {/* Navigations */}
+            <div>
+              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                Navigations
+              </p>
+              <ul className="space-y-2.5">
+                {NAV_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      className="text-sm text-white/50 transition-colors hover:text-sky-400"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <p className="mb-4 text-sm font-bold uppercase tracking-wide text-white">
+                Contact Us
+              </p>
+              <a
+                href={`mailto:${LINKS.contactEmail ?? "contact@metadogeunity.in"}`}
+                className="text-sm text-white/50 transition-colors hover:text-sky-400"
+              >
+                {LINKS.contactEmail ?? "contact@metadogeunity.in"}
+              </a>
+
+              {TOKEN?.contract && (
+                <div className="mt-6">
+                  <p className="mb-1 text-xs uppercase tracking-wide text-white/40">
+                    {TOKEN.symbol} · {TOKEN.chain}
+                  </p>
+                  <p className="break-all rounded border border-white/10 bg-black/20 px-2.5 py-2 font-mono text-[11px] leading-relaxed text-white/50">
+                    {TOKEN.contract}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 py-3 text-center">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} MetaDogeUnity. All rights reserved.
+          </p>
+        </div>
+      </footer>
 
       {/*
-        ZENITH — position: sticky; bottom: 0. Sits pinned at the very
-        bottom of the viewport, revealed as the shutter above rolls away.
+        ZENITH — position: sticky; bottom: 0; z-index: 0.
+        Stays pinned at the viewport bottom BEHIND the footer content.
+        As the footer scrolls up, this is gradually revealed — the
+        classic "curtain reveal" effect. The reveal naturally reverses
+        when scrolling back up.
       */}
       <div
         className="sticky bottom-0 z-0 flex items-center justify-center overflow-hidden"
-        style={{ height: ZENITH_HEIGHT }}
+        style={{ height: ZENITH_HEIGHT, backgroundColor: PANEL_BG }}
         aria-hidden="true"
       >
         <h2 className="select-none whitespace-nowrap font-display text-[13vw] font-extrabold uppercase leading-none tracking-tight text-white/90 sm:text-[9vw]">
           ZENITH
         </h2>
       </div>
-
-      <div style={{ height: ZENITH_HOLD }} aria-hidden="true" />
     </div>
   );
 }
